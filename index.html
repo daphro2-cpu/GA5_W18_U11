@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Unit 11 – The Body | Online Practice</title>
+
+<!-- KEEP YOUR SAME STYLE -->
+<style>
+/* (UNCHANGED STYLE — SAME AS YOUR UNIT 9) */
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+<div class="topbar">
+  <div class="brand">
+    <div class="logo"><img src="logo.png"></div>
+    <div class="titleblock">
+      <h1>Unit 11 – The Body: Online Practice</h1>
+      <div class="sub">Listening Vocabulary + Cloze Practice</div>
+    </div>
+  </div>
+  <div class="stats">
+    <div class="pill">Progress: <strong id="progress">1/18</strong></div>
+    <div class="pill">Score: <strong id="score">0</strong></div>
+    <div class="pill">Mode: <strong id="mode">Main</strong></div>
+  </div>
+</div>
+
+<div class="grid">
+
+<!-- MAIN -->
+<div class="card">
+<div class="cardHeader">
+<div class="kicker">
+<div class="sectionLabel" id="sectionLabel">Part: Listening Vocabulary</div>
+<div class="qMeta" id="qMeta">Question 1 of 18</div>
+</div>
+
+<div class="hintBox">
+<strong>How to play:</strong>
+<ul>
+<li>Listen → choose the correct word</li>
+<li>Then complete the sentences</li>
+<li>Wrong answers come back later</li>
+</ul>
+</div>
+</div>
+
+<div class="qText">
+<div class="prompt" id="promptLine">Listening Vocabulary</div>
+<div class="main" id="questionText"></div>
+</div>
+
+<div style="padding:0 18px 8px;">
+<button class="speakBtn" id="speakBtn">🔊 Listen</button>
+</div>
+
+<div class="options" id="options"></div>
+<div class="feedback" id="feedback"></div>
+
+<div class="controls">
+<div class="leftControls">
+<button class="btn" id="restartBtn">Restart</button>
+<button class="btn" id="hintBtn">Hint</button>
+</div>
+<button class="btn primary" id="nextBtn" disabled>Next</button>
+</div>
+</div>
+
+<!-- SIDE -->
+<div class="card">
+<div class="side">
+<h3>Quick Word List <span class="tag">Unit 11</span></h3>
+<div class="listBox">
+cells<br>microscope<br>virus<br>bacteria<br>disease<br>influenza<br>common cold<br>mucus<br>immune<br>infect
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+
+const questions = [
+
+/* 🎧 LISTENING VOCAB */
+
+{section:'Listening Vocabulary',
+speech:'Tiny parts that make up all living things.',
+text:'Choose the word.',
+options:['cells','virus','mucus','disease'],
+answer:0,
+hint:'Your body is made of these.'},
+
+{section:'Listening Vocabulary',
+speech:'A tool that helps you see very small things.',
+text:'Choose the word.',
+options:['bacteria','microscope','virus','cells'],
+answer:1,
+hint:'Scientists use this.'},
+
+{section:'Listening Vocabulary',
+speech:'A tiny germ that needs your body to live.',
+text:'Choose the word.',
+options:['bacteria','virus','cells','mucus'],
+answer:1,
+hint:'It causes flu.'},
+
+{section:'Listening Vocabulary',
+speech:'Tiny living things. Some are good, some are bad.',
+text:'Choose the word.',
+options:['virus','bacteria','disease','cells'],
+answer:1,
+hint:'They can live alone.'},
+
+{section:'Listening Vocabulary',
+speech:'An illness that affects your body.',
+text:'Choose the word.',
+options:['disease','mucus','cells','microscope'],
+answer:0,
+hint:'Flu is this.'},
+
+{section:'Listening Vocabulary',
+speech:'A serious illness like the flu.',
+text:'Choose the word.',
+options:['influenza','cold','bacteria','cells'],
+answer:0,
+hint:'Another word for flu.'},
+
+{section:'Listening Vocabulary',
+speech:'A mild sickness with a runny nose.',
+text:'Choose the word.',
+options:['common cold','virus','disease','mucus'],
+answer:0,
+hint:'Very common illness.'},
+
+{section:'Listening Vocabulary',
+speech:'Sticky liquid in your nose when sick.',
+text:'Choose the word.',
+options:['mucus','virus','cells','bacteria'],
+answer:0,
+hint:'You blow your nose.'},
+
+{section:'Listening Vocabulary',
+speech:'Protected from getting a disease.',
+text:'Choose the word.',
+options:['infect','immune','cells','virus'],
+answer:1,
+hint:'Your body is safe.'},
+
+{section:'Listening Vocabulary',
+speech:'To pass a disease to someone.',
+text:'Choose the word.',
+options:['infect','immune','cells','microscope'],
+answer:0,
+hint:'Spread illness.'},
+
+/* ✏️ CLOZE (ADJECTIVE ORDER + VOCAB) */
+
+{section:'Cloze',
+text:'It is a ______ tiny virus.',
+options:['tiny dangerous','dangerous tiny','dangerous','tiny'],
+answer:1,
+hint:'Opinion comes before size.'},
+
+{section:'Cloze',
+text:'She looked at a ______ small cell.',
+options:['round small','small round','round','small'],
+answer:1,
+hint:'Size before shape.'},
+
+{section:'Cloze',
+text:'He used a ______ new microscope.',
+options:['powerful new','new powerful','powerful','new'],
+answer:0,
+hint:'Opinion first.'},
+
+{section:'Cloze',
+text:'The ______ cold spreads easily.',
+options:['common','tiny','old','big'],
+answer:0,
+hint:'This illness is very common.'},
+
+{section:'Cloze',
+text:'A virus can ______ the body.',
+options:['infect','cells','mucus','immune'],
+answer:0,
+hint:'It spreads into the body.'},
+
+{section:'Cloze',
+text:'Bacteria are ______ living things.',
+options:['tiny','dangerous','round','big'],
+answer:0,
+hint:'They are very small.'},
+
+{section:'Cloze',
+text:'The body becomes ______ after fighting a disease.',
+options:['immune','virus','cells','mucus'],
+answer:0,
+hint:'Protected.'},
+
+{section:'Cloze',
+text:'We saw ______ small round cells.',
+options:['small round','round small','small','round'],
+answer:0,
+hint:'Size before shape.'}
+
+];
+
+/* KEEP ALL YOUR ORIGINAL JS BELOW (UNCHANGED) */
+
+</script>
+
+</body>
+</html>
