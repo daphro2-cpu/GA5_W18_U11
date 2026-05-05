@@ -3,217 +3,867 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Unit 11 – The Body | Online Practice</title>
+<title>Unit 11 – Week 17: Online Practice</title>
 
-<!-- KEEP YOUR SAME STYLE -->
 <style>
-/* (UNCHANGED STYLE — SAME AS YOUR UNIT 9) */
+:root{
+  --bg1:#061b2d;
+  --bg2:#111b4a;
+  --card:#10213c;
+  --card2:#142745;
+  --stroke:rgba(255,255,255,.12);
+  --text:#f2f6ff;
+  --muted:rgba(242,246,255,.72);
+  --accent:#48c7ff;
+  --good:#45f08d;
+  --bad:#ff6b6b;
+  --warn:#ffd36b;
+  --btn:#1c3154;
+  --btnHover:#24406d;
+  --radius:24px;
+  --shadow:0 18px 55px rgba(0,0,0,.38);
+}
+
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  min-height:100vh;
+  font-family:"Century Gothic","Tw Cen MT","Trebuchet MS",Arial,sans-serif;
+  color:var(--text);
+  background:
+    radial-gradient(900px 500px at 8% 0%, rgba(72,199,255,.16), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(132,96,255,.18), transparent 60%),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+  padding:44px 24px;
+}
+
+.wrap{
+  width:min(1280px,96vw);
+  margin:0 auto;
+}
+
+.topbar{
+  background:rgba(255,255,255,.07);
+  border:1px solid var(--stroke);
+  border-radius:28px;
+  padding:20px 22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  box-shadow:var(--shadow);
+  backdrop-filter:blur(10px);
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+
+.logo{
+  width:58px;
+  height:58px;
+  border-radius:18px;
+  background:rgba(72,199,255,.13);
+  border:1px solid rgba(72,199,255,.2);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:32px;
+}
+
+.titleblock h1{
+  margin:0;
+  font-size:clamp(24px,3vw,38px);
+  letter-spacing:.3px;
+}
+
+.titleblock .sub{
+  margin-top:5px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+.stats{
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+}
+
+.pill{
+  padding:11px 16px;
+  border-radius:999px;
+  background:rgba(255,255,255,.10);
+  border:1px solid var(--stroke);
+  color:var(--muted);
+  font-size:15px;
+}
+
+.pill strong{color:var(--text)}
+
+.grid{
+  margin-top:20px;
+  display:grid;
+  grid-template-columns:1.8fr 1fr;
+  gap:20px;
+}
+
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr}
+  .topbar{flex-direction:column;align-items:flex-start}
+}
+
+.card{
+  background:rgba(16,33,60,.78);
+  border:1px solid var(--stroke);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+
+.cardHeader{
+  padding:20px 22px 16px;
+  border-bottom:1px solid var(--stroke);
+}
+
+.kicker{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+  margin-bottom:14px;
+}
+
+.sectionLabel{
+  display:inline-flex;
+  align-items:center;
+  padding:9px 16px;
+  border-radius:999px;
+  background:rgba(72,199,255,.12);
+  border:1px solid rgba(72,199,255,.28);
+  color:var(--text);
+  font-size:16px;
+  font-weight:700;
+}
+
+.qMeta{
+  color:var(--muted);
+  font-size:15px;
+}
+
+.hintBox{
+  padding:16px 18px;
+  border-radius:18px;
+  background:rgba(0,0,0,.16);
+  border:1px solid rgba(255,255,255,.10);
+  color:var(--muted);
+  line-height:1.35;
+}
+
+.hintBox ul{
+  margin:10px 0 0;
+  padding-left:20px;
+}
+
+.qText{
+  padding:24px 24px 8px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+.prompt{
+  color:var(--muted);
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+  font-size:15px;
+  margin-bottom:10px;
+}
+
+.main{
+  font-size:24px;
+  line-height:1.4;
+}
+
+.speakArea{
+  padding:12px 24px 10px;
+}
+
+.speakBtn{
+  border:1px solid rgba(72,199,255,.35);
+  background:rgba(72,199,255,.13);
+  color:var(--text);
+  padding:10px 16px;
+  border-radius:999px;
+  cursor:pointer;
+  font-weight:700;
+}
+
+.speakBtn:hover{
+  background:rgba(72,199,255,.20);
+}
+
+.options{
+  padding:12px 24px 24px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+@media(max-width:560px){
+  .options{grid-template-columns:1fr}
+}
+
+.optBtn{
+  text-align:left;
+  padding:17px 18px;
+  border-radius:18px;
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.14);
+  color:var(--text);
+  font-size:17px;
+  font-weight:700;
+  cursor:pointer;
+  transition:.12s ease;
+}
+
+.optBtn:hover{
+  transform:translateY(-1px);
+  background:rgba(255,255,255,.10);
+}
+
+.optBtn:disabled{
+  cursor:default;
+  opacity:.8;
+  transform:none;
+}
+
+.feedback{
+  padding:0 24px 14px;
+  min-height:40px;
+  color:var(--muted);
+  font-size:16px;
+}
+
+.feedback.good{color:var(--good)}
+.feedback.bad{color:var(--bad)}
+.feedback.warn{color:var(--warn)}
+
+.controls{
+  padding:12px 24px 24px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:12px;
+}
+
+.leftControls{
+  display:flex;
+  gap:10px;
+}
+
+.btn{
+  border:1px solid rgba(255,255,255,.15);
+  background:var(--btn);
+  color:var(--text);
+  padding:13px 18px;
+  border-radius:999px;
+  cursor:pointer;
+  font-size:15px;
+  font-weight:700;
+}
+
+.btn:hover{background:var(--btnHover)}
+.btn.primary{
+  background:rgba(72,199,255,.13);
+  border-color:rgba(72,199,255,.30);
+}
+.btn:disabled{
+  opacity:.48;
+  cursor:default;
+}
+
+.side{
+  padding:22px;
+}
+
+.side h3{
+  margin:0 0 14px;
+  font-size:22px;
+}
+
+.tag{
+  font-size:12px;
+  color:var(--muted);
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.08);
+  padding:5px 10px;
+  border-radius:999px;
+  margin-left:8px;
+}
+
+.small{
+  color:var(--muted);
+  font-size:16px;
+  line-height:1.5;
+  margin-bottom:14px;
+}
+
+.listBox{
+  background:rgba(0,0,0,.18);
+  border:1px solid rgba(255,255,255,.10);
+  border-radius:18px;
+  padding:16px;
+  color:var(--muted);
+  font-size:17px;
+  line-height:1.65;
+  max-height:370px;
+  overflow:auto;
+}
+
+.divider{
+  height:1px;
+  background:rgba(255,255,255,.12);
+  margin:18px 0;
+}
 </style>
 </head>
 
 <body>
 <div class="wrap">
 
-<div class="topbar">
-  <div class="brand">
-    <div class="logo"><img src="logo.png"></div>
-    <div class="titleblock">
-      <h1>Unit 11 – The Body: Online Practice</h1>
-      <div class="sub">Listening Vocabulary + Cloze Practice</div>
+  <div class="topbar">
+    <div class="brand">
+      <div class="logo">🦠</div>
+      <div class="titleblock">
+        <h1>Unit 11 – Week 17: Online Practice</h1>
+        <div class="sub">Listening Vocabulary + Words in Context + Cloze + Adjective Order</div>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="pill">Progress: <strong id="progress">1/24</strong></div>
+      <div class="pill">Score: <strong id="score">0</strong></div>
+      <div class="pill">Mode: <strong id="mode">Main</strong></div>
     </div>
   </div>
-  <div class="stats">
-    <div class="pill">Progress: <strong id="progress">1/18</strong></div>
-    <div class="pill">Score: <strong id="score">0</strong></div>
-    <div class="pill">Mode: <strong id="mode">Main</strong></div>
+
+  <div class="grid">
+
+    <div class="card">
+      <div class="cardHeader">
+        <div class="kicker">
+          <div class="sectionLabel" id="sectionLabel">Part: Listening Vocabulary</div>
+          <div class="qMeta" id="qMeta">Question 1 of 24</div>
+        </div>
+
+        <div class="hintBox">
+          <strong>How to play:</strong>
+          <ul>
+            <li><strong>Listening Vocabulary:</strong> click the speaker, listen to the definition, then choose the correct word.</li>
+            <li><strong>Words in Context:</strong> choose the word that matches the clue.</li>
+            <li><strong>Cloze:</strong> choose the best word to complete the sentence.</li>
+            <li><strong>Adjective Order:</strong> choose the natural adjective order.</li>
+            <li>Wrong answers will come back at the end for review.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="qText">
+        <div class="prompt" id="promptLine">Listening Vocabulary</div>
+        <div class="main" id="questionText"></div>
+      </div>
+
+      <div class="speakArea">
+        <button class="speakBtn" id="speakBtn">🔊 Listen</button>
+      </div>
+
+      <div class="options" id="options"></div>
+      <div class="feedback" id="feedback"></div>
+
+      <div class="controls">
+        <div class="leftControls">
+          <button class="btn" id="restartBtn">Restart</button>
+          <button class="btn" id="hintBtn">Hint</button>
+        </div>
+        <button class="btn primary" id="nextBtn" disabled>Next</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="side">
+        <h3>Quick Word List <span class="tag">Unit 11</span></h3>
+        <div class="small">Target words from the unit and words in context.</div>
+        <div class="listBox">
+          cells<br>
+          microscope<br>
+          virus<br>
+          bacteria<br>
+          disease<br>
+          influenza<br>
+          common cold<br>
+          mucus<br>
+          immune<br>
+          paralyze<br>
+          infect<br>
+          <br>
+          <strong>Words in Context</strong><br>
+          suit<br>
+          scrape<br>
+          fluid<br>
+          swallowed<br>
+          <br>
+          <strong>Word Study</strong><br>
+          shrink / expand<br>
+          dead / live<br>
+          inhale / exhale
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="small">
+          <strong>Skill link:</strong> main idea and theme, words in context, and adjective order.
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
-
-<div class="grid">
-
-<!-- MAIN -->
-<div class="card">
-<div class="cardHeader">
-<div class="kicker">
-<div class="sectionLabel" id="sectionLabel">Part: Listening Vocabulary</div>
-<div class="qMeta" id="qMeta">Question 1 of 18</div>
-</div>
-
-<div class="hintBox">
-<strong>How to play:</strong>
-<ul>
-<li>Listen → choose the correct word</li>
-<li>Then complete the sentences</li>
-<li>Wrong answers come back later</li>
-</ul>
-</div>
-</div>
-
-<div class="qText">
-<div class="prompt" id="promptLine">Listening Vocabulary</div>
-<div class="main" id="questionText"></div>
-</div>
-
-<div style="padding:0 18px 8px;">
-<button class="speakBtn" id="speakBtn">🔊 Listen</button>
-</div>
-
-<div class="options" id="options"></div>
-<div class="feedback" id="feedback"></div>
-
-<div class="controls">
-<div class="leftControls">
-<button class="btn" id="restartBtn">Restart</button>
-<button class="btn" id="hintBtn">Hint</button>
-</div>
-<button class="btn primary" id="nextBtn" disabled>Next</button>
-</div>
-</div>
-
-<!-- SIDE -->
-<div class="card">
-<div class="side">
-<h3>Quick Word List <span class="tag">Unit 11</span></h3>
-<div class="listBox">
-cells<br>microscope<br>virus<br>bacteria<br>disease<br>influenza<br>common cold<br>mucus<br>immune<br>infect
-</div>
-</div>
-</div>
-
-</div>
 </div>
 
 <script>
-
 const questions = [
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'The tiny parts that make up all living things.',
+    text:'Choose the word that matches the definition.',
+    options:['cells','virus','mucus','disease'],
+    answer:0,
+    hint:'Your body is made of these tiny parts.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'A tool that helps scientists see very small things.',
+    text:'Choose the word that matches the definition.',
+    options:['microscope','bacteria','influenza','immune'],
+    answer:0,
+    hint:'Scientists look through this tool.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'A tiny germ that needs a body cell to make more of itself.',
+    text:'Choose the word that matches the definition.',
+    options:['bacteria','virus','mucus','cells'],
+    answer:1,
+    hint:'It needs your body to live and spread.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'Tiny living things. Some can help us, and some can make us sick.',
+    text:'Choose the word that matches the definition.',
+    options:['bacteria','virus','influenza','disease'],
+    answer:0,
+    hint:'These can live by themselves.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'An illness or health problem in the body.',
+    text:'Choose the word that matches the definition.',
+    options:['disease','mucus','microscope','cells'],
+    answer:0,
+    hint:'Influenza is one example.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'A serious illness also called the flu.',
+    text:'Choose the word that matches the definition.',
+    options:['common cold','influenza','bacteria','mucus'],
+    answer:1,
+    hint:'This is another word for the flu.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'A common sickness with sneezing, coughing, and a runny nose.',
+    text:'Choose the word that matches the definition.',
+    options:['common cold','virus','disease','immune'],
+    answer:0,
+    hint:'Many students get this every year.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'A thick, sticky fluid in your nose or throat when you are sick.',
+    text:'Choose the word that matches the definition.',
+    options:['mucus','cells','bacteria','suit'],
+    answer:0,
+    hint:'You may blow this out of your nose.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'Protected from getting a disease.',
+    text:'Choose the word that matches the definition.',
+    options:['immune','infect','paralyze','swallowed'],
+    answer:0,
+    hint:'Your body can fight it.'
+  },
+  {
+    section:'Listening Vocabulary',
+    prompt:'Listen to the definition and choose the correct word.',
+    speech:'To make a person or living thing sick by spreading germs.',
+    text:'Choose the word that matches the definition.',
+    options:['infect','immune','scrape','fluid'],
+    answer:0,
+    hint:'Viruses can do this to cells.'
+  },
 
-/* 🎧 LISTENING VOCAB */
+  {
+    section:'Words in Context',
+    prompt:'Choose the word that matches the clue.',
+    speech:'You can wear this on your body.',
+    text:'You can wear this on your body.',
+    options:['suit','scrape','fluid','swallowed'],
+    answer:0,
+    hint:'Max Axiom wears one.'
+  },
+  {
+    section:'Words in Context',
+    prompt:'Choose the word that matches the clue.',
+    speech:'If you have one of these, your skin may hurt.',
+    text:'If you have one of these, your skin may hurt.',
+    options:['scrape','fluid','suit','immune'],
+    answer:0,
+    hint:'It can happen when skin is cut or rubbed.'
+  },
+  {
+    section:'Words in Context',
+    prompt:'Choose the word that matches the clue.',
+    speech:'This word describes water, juice, oil, or blood.',
+    text:'This word describes water, juice, oil, or blood.',
+    options:['fluid','mucus','cells','scrape'],
+    answer:0,
+    hint:'It means a liquid.'
+  },
+  {
+    section:'Words in Context',
+    prompt:'Choose the word that matches the clue.',
+    speech:'If a person did this, they ate or drank something.',
+    text:'If a person did this, they ate or drank something.',
+    options:['swallowed','infected','paralyzed','expanded'],
+    answer:0,
+    hint:'Food goes down your throat.'
+  },
 
-{section:'Listening Vocabulary',
-speech:'Tiny parts that make up all living things.',
-text:'Choose the word.',
-options:['cells','virus','mucus','disease'],
-answer:0,
-hint:'Your body is made of these.'},
+  {
+    section:'Cloze',
+    prompt:'Choose the best word to complete the sentence.',
+    speech:'Every part of your body is made up of tiny blank.',
+    text:'Every part of your body is made up of tiny ______.',
+    options:['cells','viruses','diseases','microscopes'],
+    answer:0,
+    hint:'These are tiny body parts.'
+  },
+  {
+    section:'Cloze',
+    prompt:'Choose the best word to complete the sentence.',
+    speech:'Scientists use a blank to see tiny cells and germs.',
+    text:'Scientists use a ______ to see tiny cells and germs.',
+    options:['microscope','disease','suit','fluid'],
+    answer:0,
+    hint:'This is a tool.'
+  },
+  {
+    section:'Cloze',
+    prompt:'Choose the best word to complete the sentence.',
+    speech:'A blank can enter your body and make you sick.',
+    text:'A ______ can enter your body and make you sick.',
+    options:['virus','scrape','suit','cell'],
+    answer:0,
+    hint:'It needs your body to spread.'
+  },
+  {
+    section:'Cloze',
+    prompt:'Choose the best word to complete the sentence.',
+    speech:'Some blank can make people very sick.',
+    text:'Some ______ can make people very sick.',
+    options:['bacteria','microscope','mucus','suit'],
+    answer:0,
+    hint:'These are tiny living things.'
+  },
+  {
+    section:'Cloze',
+    prompt:'Choose the best word to complete the sentence.',
+    speech:'Your body may make more blank when you have a cold.',
+    text:'Your body may make more ______ when you have a cold.',
+    options:['mucus','suit','scrape','microscope'],
+    answer:0,
+    hint:'It is sticky and in your nose or throat.'
+  },
+  {
+    section:'Cloze',
+    prompt:'Choose the best word to complete the sentence.',
+    speech:'A cut or scrape may let viruses blank your cells.',
+    text:'A cut or scrape may let viruses ______ your cells.',
+    options:['infect','immune','swallowed','expand'],
+    answer:0,
+    hint:'The virus gets into cells.'
+  },
 
-{section:'Listening Vocabulary',
-speech:'A tool that helps you see very small things.',
-text:'Choose the word.',
-options:['bacteria','microscope','virus','cells'],
-answer:1,
-hint:'Scientists use this.'},
-
-{section:'Listening Vocabulary',
-speech:'A tiny germ that needs your body to live.',
-text:'Choose the word.',
-options:['bacteria','virus','cells','mucus'],
-answer:1,
-hint:'It causes flu.'},
-
-{section:'Listening Vocabulary',
-speech:'Tiny living things. Some are good, some are bad.',
-text:'Choose the word.',
-options:['virus','bacteria','disease','cells'],
-answer:1,
-hint:'They can live alone.'},
-
-{section:'Listening Vocabulary',
-speech:'An illness that affects your body.',
-text:'Choose the word.',
-options:['disease','mucus','cells','microscope'],
-answer:0,
-hint:'Flu is this.'},
-
-{section:'Listening Vocabulary',
-speech:'A serious illness like the flu.',
-text:'Choose the word.',
-options:['influenza','cold','bacteria','cells'],
-answer:0,
-hint:'Another word for flu.'},
-
-{section:'Listening Vocabulary',
-speech:'A mild sickness with a runny nose.',
-text:'Choose the word.',
-options:['common cold','virus','disease','mucus'],
-answer:0,
-hint:'Very common illness.'},
-
-{section:'Listening Vocabulary',
-speech:'Sticky liquid in your nose when sick.',
-text:'Choose the word.',
-options:['mucus','virus','cells','bacteria'],
-answer:0,
-hint:'You blow your nose.'},
-
-{section:'Listening Vocabulary',
-speech:'Protected from getting a disease.',
-text:'Choose the word.',
-options:['infect','immune','cells','virus'],
-answer:1,
-hint:'Your body is safe.'},
-
-{section:'Listening Vocabulary',
-speech:'To pass a disease to someone.',
-text:'Choose the word.',
-options:['infect','immune','cells','microscope'],
-answer:0,
-hint:'Spread illness.'},
-
-/* ✏️ CLOZE (ADJECTIVE ORDER + VOCAB) */
-
-{section:'Cloze',
-text:'It is a ______ tiny virus.',
-options:['tiny dangerous','dangerous tiny','dangerous','tiny'],
-answer:1,
-hint:'Opinion comes before size.'},
-
-{section:'Cloze',
-text:'She looked at a ______ small cell.',
-options:['round small','small round','round','small'],
-answer:1,
-hint:'Size before shape.'},
-
-{section:'Cloze',
-text:'He used a ______ new microscope.',
-options:['powerful new','new powerful','powerful','new'],
-answer:0,
-hint:'Opinion first.'},
-
-{section:'Cloze',
-text:'The ______ cold spreads easily.',
-options:['common','tiny','old','big'],
-answer:0,
-hint:'This illness is very common.'},
-
-{section:'Cloze',
-text:'A virus can ______ the body.',
-options:['infect','cells','mucus','immune'],
-answer:0,
-hint:'It spreads into the body.'},
-
-{section:'Cloze',
-text:'Bacteria are ______ living things.',
-options:['tiny','dangerous','round','big'],
-answer:0,
-hint:'They are very small.'},
-
-{section:'Cloze',
-text:'The body becomes ______ after fighting a disease.',
-options:['immune','virus','cells','mucus'],
-answer:0,
-hint:'Protected.'},
-
-{section:'Cloze',
-text:'We saw ______ small round cells.',
-options:['small round','round small','small','round'],
-answer:0,
-hint:'Size before shape.'}
-
+  {
+    section:'Adjective Order',
+    prompt:'Choose the most natural adjective order.',
+    speech:'Choose the most natural adjective order.',
+    text:'Max Axiom studies these ______ visitors.',
+    options:['fascinating tiny','tiny fascinating','fascinating and tiny','tiny and fascinating'],
+    answer:0,
+    hint:'Opinion comes before size.'
+  },
+  {
+    section:'Adjective Order',
+    prompt:'Choose the most natural adjective order.',
+    speech:'Choose the most natural adjective order.',
+    text:'The doctor washed his ______ lab coat.',
+    options:['white new','new white','new and white','white and new'],
+    answer:1,
+    hint:'Age comes before color.'
+  },
+  {
+    section:'Adjective Order',
+    prompt:'Choose the most natural adjective order.',
+    speech:'Choose the most natural adjective order.',
+    text:'Max saw ______ viruses under the microscope.',
+    options:['round red large','large round red','red large round','round large red'],
+    answer:1,
+    hint:'Size, then shape, then color.'
+  },
+  {
+    section:'Adjective Order',
+    prompt:'Choose the most natural adjective order.',
+    speech:'Choose the most natural adjective order.',
+    text:'It was a ______ polio virus.',
+    options:['tiny gray ugly','gray ugly tiny','ugly tiny gray','tiny ugly gray'],
+    answer:2,
+    hint:'Opinion, size, color.'
+  }
 ];
 
-/* KEEP ALL YOUR ORIGINAL JS BELOW (UNCHANGED) */
+let index = 0;
+let score = 0;
+let allowNext = false;
+let inReview = false;
+let reviewPos = 0;
+let wrongIndexes = [];
 
+const progressEl = document.getElementById('progress');
+const scoreEl = document.getElementById('score');
+const modeEl = document.getElementById('mode');
+const sectionLabelEl = document.getElementById('sectionLabel');
+const qMetaEl = document.getElementById('qMeta');
+const promptLineEl = document.getElementById('promptLine');
+const questionTextEl = document.getElementById('questionText');
+const optionsEl = document.getElementById('options');
+const feedbackEl = document.getElementById('feedback');
+const nextBtn = document.getElementById('nextBtn');
+const restartBtn = document.getElementById('restartBtn');
+const hintBtn = document.getElementById('hintBtn');
+const speakBtn = document.getElementById('speakBtn');
+
+function currentQuestion(){
+  return inReview ? questions[wrongIndexes[reviewPos]] : questions[index];
+}
+
+function setStats(){
+  progressEl.textContent = `${inReview ? reviewPos + 1 : index + 1}/${inReview ? wrongIndexes.length : questions.length}`;
+  scoreEl.textContent = score;
+  modeEl.textContent = inReview ? 'Review' : 'Main';
+}
+
+let speechVoices = [];
+
+function loadVoices(){
+  speechVoices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
+}
+
+loadVoices();
+
+if(window.speechSynthesis && 'onvoiceschanged' in window.speechSynthesis){
+  window.speechSynthesis.onvoiceschanged = loadVoices;
+}
+
+function pickAmericanVoice(){
+  if(!speechVoices || !speechVoices.length) return null;
+  return speechVoices.find(v => /Google US English/i.test(v.name)) ||
+         speechVoices.find(v => /Microsoft Aria/i.test(v.name)) ||
+         speechVoices.find(v => /Jenny/i.test(v.name) && /en-US/i.test(v.lang)) ||
+         speechVoices.find(v => /Guy/i.test(v.name) && /en-US/i.test(v.lang)) ||
+         speechVoices.find(v => /Samantha/i.test(v.name)) ||
+         speechVoices.find(v => /^en-US$/i.test(v.lang)) ||
+         speechVoices.find(v => /English \(United States\)/i.test(v.name)) ||
+         null;
+}
+
+function formatForSpeech(txt){
+  return `Listen carefully. ${txt.replace(/\./g,'...')} ... Think. What is the answer?`;
+}
+
+function speakText(txt){
+  if(!window.speechSynthesis) return;
+  loadVoices();
+  window.speechSynthesis.cancel();
+
+  const utterance = new SpeechSynthesisUtterance(formatForSpeech(txt));
+  const voice = pickAmericanVoice();
+
+  if(voice) utterance.voice = voice;
+  utterance.lang = (voice && voice.lang) ? voice.lang : 'en-US';
+  utterance.rate = 0.88;
+  utterance.pitch = 1.04;
+  utterance.volume = 1;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+function render(){
+  const q = currentQuestion();
+
+  sectionLabelEl.textContent = `Part: ${q.section}`;
+  qMetaEl.textContent = inReview
+    ? `Review ${reviewPos + 1} of ${wrongIndexes.length}`
+    : `Question ${index + 1} of ${questions.length}`;
+
+  promptLineEl.textContent = q.section.toUpperCase();
+  questionTextEl.innerHTML = `
+    <div class="prompt">${q.prompt}</div>
+    <div class="main">${q.text}</div>
+  `;
+
+  optionsEl.innerHTML = '';
+
+  q.options.forEach((opt, i) => {
+    const button = document.createElement('button');
+    button.className = 'optBtn';
+    button.textContent = opt;
+    button.onclick = () => choose(i);
+    optionsEl.appendChild(button);
+  });
+
+  feedbackEl.className = 'feedback';
+  feedbackEl.textContent = '';
+  allowNext = false;
+  nextBtn.disabled = true;
+  speakBtn.onclick = () => speakText(q.speech);
+
+  setStats();
+}
+
+function choose(i){
+  const q = currentQuestion();
+  [...optionsEl.children].forEach(b => b.disabled = true);
+
+  if(i === q.answer){
+    if(!inReview) score += 1;
+    feedbackEl.className = 'feedback good';
+    feedbackEl.textContent = 'Correct. Good work.';
+    allowNext = true;
+    nextBtn.disabled = false;
+    setStats();
+  } else {
+    feedbackEl.className = 'feedback bad';
+    feedbackEl.textContent = `Not quite. Hint: ${q.hint}`;
+
+    if(!inReview){
+      const realIndex = index;
+      if(!wrongIndexes.includes(realIndex)) wrongIndexes.push(realIndex);
+    }
+
+    const correctButton = [...optionsEl.children][q.answer];
+    correctButton.style.borderColor = 'rgba(69,240,141,.85)';
+    correctButton.style.background = 'rgba(69,240,141,.13)';
+  }
+}
+
+function next(){
+  if(!allowNext) return;
+
+  if(!inReview){
+    index += 1;
+
+    if(index < questions.length){
+      render();
+      return;
+    }
+
+    if(wrongIndexes.length){
+      inReview = true;
+      reviewPos = 0;
+      render();
+      return;
+    }
+
+    finish();
+  } else {
+    reviewPos += 1;
+
+    if(reviewPos < wrongIndexes.length){
+      render();
+      return;
+    }
+
+    finish();
+  }
+}
+
+function finish(){
+  sectionLabelEl.textContent = 'Finished';
+  qMetaEl.textContent = 'All done';
+  promptLineEl.textContent = 'SUMMARY';
+
+  const missed = [...new Set(wrongIndexes.map(i => questions[i].options[questions[i].answer]))];
+
+  questionTextEl.innerHTML = `
+    <div class="main">
+      You finished Unit 11.<br><br>
+      <strong>Your score:</strong> ${score} / ${questions.length}.
+      ${
+        missed.length
+        ? `<br><br><strong>Review these answers:</strong><br>${missed.join(', ')}`
+        : `<br><br><strong>Excellent work.</strong>`
+      }
+    </div>
+  `;
+
+  optionsEl.innerHTML = '';
+  feedbackEl.textContent = '';
+  nextBtn.disabled = true;
+  speakBtn.onclick = null;
+}
+
+function restart(){
+  index = 0;
+  score = 0;
+  allowNext = false;
+  inReview = false;
+  reviewPos = 0;
+  wrongIndexes = [];
+  render();
+}
+
+nextBtn.addEventListener('click', next);
+restartBtn.addEventListener('click', restart);
+hintBtn.addEventListener('click', () => {
+  const q = currentQuestion();
+  feedbackEl.className = 'feedback warn';
+  feedbackEl.textContent = `Hint: ${q.hint}`;
+});
+
+render();
 </script>
-
 </body>
 </html>
